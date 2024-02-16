@@ -4,6 +4,7 @@ import {Octokit} from 'octokit';
 function App() {
 
   const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState([])
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -20,8 +21,8 @@ function App() {
         headers: {
           'X-GitHub-Api-Version': '2022-11-28'
         }
-        })
-      console.log(res);
+      })
+      setSearchResult(res.data);
     } catch(error){
       alert(`User's repository is not found`);
       setSearchInput("");
@@ -41,7 +42,11 @@ function App() {
         <input type="submit"
         value="Search"/>
       </form>
-      
+      <ul >
+        {searchResult.map((repos) => (
+          <li key={repos.id}>{repos.name}</li>))
+        }
+      </ul>
     </div>
   );
 }
