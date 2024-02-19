@@ -43,8 +43,8 @@ function App() {
         value="Search"/>
       </form>
       <ul >
-        {searchResult.map((repos) => (
-          <li key={repos.id}>{repos.name}</li>))
+        {searchResult.map((repo) => (
+          <li key={repo.id}>{repo.name}</li>))
         }
       </ul>
     </div>
