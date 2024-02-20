@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Octokit} from 'octokit';
+import { Octokit } from 'octokit';
 
 function App() {
 
