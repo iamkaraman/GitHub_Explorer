@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Octokit } from 'octokit';
+import { Link } from 'react-router-dom';
 
 function App() {
 
@@ -23,6 +24,9 @@ function App() {
         }
       })
       setSearchResult(res.data);
+      
+      console.log("Console the res.data", res.data);
+
     } catch(error){
       alert(`User's repository is not found`);
       setSearchInput("");
@@ -42,9 +46,9 @@ function App() {
         <input type="submit"
         value="Search"/>
       </form>
-      <ul >
+      <ul>
         {searchResult.map((repo) => (
-          <li key={repo.id}>{repo.name}</li>))
+          <Link to={`/repository-info/${repo.owner.login}/${repo.name}`}  key={repo.id}><li>{repo.name}</li></Link>))
         }
       </ul>
     </div>
