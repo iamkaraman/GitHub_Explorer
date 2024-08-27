@@ -47,7 +47,7 @@ function RepoInfo () {
             <h4>{params.owner}</h4>
             <ul>
                 {languages.map((language)=>(
-                    <li>{language}</li>
+                    <li key={language}>{language}</li>
                 ))}
             </ul>
             <p>{content}</p>
