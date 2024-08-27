@@ -13,32 +13,41 @@ function RepoInfo () {
         const octokit = new Octokit({});
 
         async function getReadMe() {
-            const res = await octokit.request('GET /repos/{owner}/{repo}/readme', {
-                owner: params.owner,
-                repo: params.repo,
-                headers: {
-                    'X-GitHub-Api-Version': '2022-11-28'
-                }
-            })
-            setContent(atob(res.data.content));
+            try{
+                const res = await octokit.request('GET /repos/{owner}/{repo}/readme', {
+                    owner: params.owner,
+                    repo: params.repo,
+                    headers: {
+                        'X-GitHub-Api-Version': '2022-11-28'
+                    }
+                })
+                setContent(atob(res.data.content));
+            } catch(error){
+                alert('ReadMe is not found!')
+            }
         }
 
         getReadMe();
 
         //The following block fetches languages of the repo from the API
         async function getLanguages(){
-            const res = await octokit.request('GET /repos/{owner}/{repo}/languages', {
-                owner: params.owner,
-                repo: params.repo,
-                headers: {
-                    'X-GitHub-Api-Version': '2022-11-28'
-                }
-            })
-            setLanguages(Object.keys(res.data));
+            try{
+                const res = await octokit.request('GET /repos/{owner}/{repo}/languages', {
+                    owner: params.owner,
+                    repo: params.repo,
+                    headers: {
+                        'X-GitHub-Api-Version': '2022-11-28'
+                    }
+                })
+                setLanguages(Object.keys(res.data));
+            } catch(error){
+                alert('Language is not found!')
+            }
+            
         }
 
         getLanguages();
-    })
+    }, [])
    
     return (
         <div>
