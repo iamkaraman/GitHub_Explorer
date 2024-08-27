@@ -21,7 +21,16 @@ function RepoInfo () {
                         'X-GitHub-Api-Version': '2022-11-28'
                     }
                 })
-                setContent(atob(res.data.content));
+
+                //The following block converts the markdown to HTML by GitHub API
+                const markdown = await octokit.request('POST /markdown', {
+                    text: atob(res.data.content),
+                    headers: {
+                      'X-GitHub-Api-Version': '2022-11-28'
+                    }
+                })
+
+                setContent(markdown.data);
             } catch(error){
                 alert('ReadMe is not found!')
             }
@@ -59,7 +68,7 @@ function RepoInfo () {
                     <li key={language}>{language}</li>
                 ))}
             </ul>
-            <p>{content}</p>
+            <div dangerouslySetInnerHTML={{ __html: content }} />
         </div>
     )
 }
