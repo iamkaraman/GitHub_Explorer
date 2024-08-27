@@ -5,10 +5,11 @@ import './index.css';
 
 import App from './App';
 import RepoInfo from "./RepoInfo";
+import ErrorPage from "./ErrorPage"
 
 
 const router = createBrowserRouter([
-  { path: '/', element: <App /> },
+  { path: '/', element: <App />, errorElement: <ErrorPage /> },
   { path: '/repository-info/:owner/:repo', element: <RepoInfo />}
 ]);
 
