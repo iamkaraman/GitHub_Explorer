@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Octokit } from 'octokit';
 import { Link } from 'react-router-dom';
+import gitHubImg from './assets/github.jpeg';
 
 function App() {
 
@@ -34,23 +35,26 @@ function App() {
   }
 
   return (
-    <div>
-      <header>
-        <h1>GitHub Explorer</h1>
-      </header>
-      <form onSubmit={clickHandler}>
-        <input type="text"
-        placeholder="Search here"
-        onChange={handleChange}
-        value={searchInput}/>
-        <input type="submit"
-        value="Search"/>
-      </form>
-      <ul>
-        {searchResult.map((repo) => (
-          <Link to={`/repository-info/${repo.owner.login}/${repo.name}`}  key={repo.id}><li>{repo.name}</li></Link>))
-        }
-      </ul>
+    <div class='container'>
+      <div class='row justify-content-center'>
+        <div class='col-4'>
+          <img src={gitHubImg} alt='github logo'/>
+          <h1>GitHub Explorer</h1>
+          <form onSubmit={clickHandler}>
+            <input type="text"
+            placeholder="Search here"
+            onChange={handleChange}
+            value={searchInput}/>
+            <input type="submit"
+            value="Search"/>
+          </form>
+          <ul>
+            {searchResult.map((repo) => (
+              <Link to={`/repository-info/${repo.owner.login}/${repo.name}`}  key={repo.id}><li>{repo.name}</li></Link>))
+            }
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
