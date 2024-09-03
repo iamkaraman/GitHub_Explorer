@@ -36,8 +36,8 @@ function App() {
 
   return (
     <div className='container'>
-      <div className='row justify-content-center'>
-        <div className='col-4'>
+      <div className='row justify-content-center align-items-center'>
+        <div className='col-4 text-center'>
           <img src={gitHubImg} alt='github logo'/>
           <h1>GitHub Explorer</h1>
           <form onSubmit={clickHandler}>
