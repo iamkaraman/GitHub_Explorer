@@ -36,17 +36,25 @@ function App() {
 
   return (
     <div className='container'>
-      <div className='row justify-content-center align-items-center'>
+      <div className='row justify-content-center'>
         <div className='col-4 text-center'>
           <img src={gitHubImg} alt='github-logo'/>
           <h1>GitHub Explorer</h1>
           <form onSubmit={clickHandler}>
-            <input type="text"
-            placeholder="Search here"
-            onChange={handleChange}
-            value={searchInput}/>
-            <input type="submit"
-            value="Search"/>
+            <div className='form-group row g-2'>
+              <div className="col-8">
+                <input type="text"
+                className="form-control"
+                placeholder="Search here"
+                onChange={handleChange}
+                value={searchInput}/>
+              </div>
+              <div className="col-4">
+                <button  className='btn btn-dark w-100' data-toggle="button" type="submit">
+                  Search
+                </button>
+              </div>
+            </div> 
           </form>
           <ul>
             {searchResult.map((repo) => (
@@ -61,6 +69,7 @@ function App() {
         </div>
       </div>
     </div>
+
   );
 }
 
