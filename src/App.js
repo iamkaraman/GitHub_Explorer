@@ -6,7 +6,7 @@ import gitHubImg from './assets/github.jpeg';
 function App() {
 
   const [searchInput, setSearchInput] = useState("");
-  const [searchResult, setSearchResult] = useState([])
+  const [searchResult, setSearchResult] = useState([]);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -38,7 +38,7 @@ function App() {
     <div className='container'>
       <div className='row justify-content-center align-items-center'>
         <div className='col-4 text-center'>
-          <img src={gitHubImg} alt='github logo'/>
+          <img src={gitHubImg} alt='github-logo'/>
           <h1>GitHub Explorer</h1>
           <form onSubmit={clickHandler}>
             <input type="text"
@@ -50,7 +50,12 @@ function App() {
           </form>
           <ul>
             {searchResult.map((repo) => (
-              <Link to={`/repository-info/${repo.owner.login}/${repo.name}`}  key={repo.id}><li>{repo.name}</li></Link>))
+              <Link to={`/repository-info/${repo.owner.login}/${repo.name}`} 
+                key={repo.id}>
+                  <li>
+                    {repo.name}
+                  </li>
+              </Link>))
             }
           </ul>
         </div>
