@@ -56,11 +56,11 @@ function App() {
               </div>
             </div> 
           </form>
-          <ul class="list-group list-group-flush">
+          <ul className="list-group list-group-flush">
             {searchResult.map((repo) => (
               <Link to={`/repository-info/${repo.owner.login}/${repo.name}`} 
                 key={repo.id}>
-                  <li class="list-group-item mt-2 mb-2">
+                  <li className="list-group-item mt-2 mb-2">
                     {repo.name}
                   </li>
               </Link>))
