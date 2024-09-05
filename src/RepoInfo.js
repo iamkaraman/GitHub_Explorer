@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Octokit } from 'octokit';
 import { useEffect, useState } from 'react';
+import './github-markdown-light.css'
 
 function RepoInfo () {
     const params = useParams();
@@ -60,15 +61,17 @@ function RepoInfo () {
    
     return (
         <div>
-            <h2>Repository Information</h2>
-            <h3>{params.repo}</h3>
-            <h4>{params.owner}</h4>
-            <ul>
-                {languages.map((language)=>(
-                    <li key={language}>{language}</li>
-                ))}
-            </ul>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <div className="body">
+                <h1 className="body-header">Repository Information</h1>
+                <h4 className="body-sm-header">Repository name: <span className="notbold">{params.repo}</span></h4>
+                <h4 className="body-sm-header">Repository owner: <span className="notbold">{params.owner}</span></h4>
+                <ul className="list-group list-group-horizontal">
+                    {languages.map((language)=>(
+                        <li className='list-group-item' key={language}>{language}</li>
+                    ))}
+                </ul>
+            </div>
+            <div className="markdown-body" dangerouslySetInnerHTML={{ __html: content }} />
         </div>
     )
 }
