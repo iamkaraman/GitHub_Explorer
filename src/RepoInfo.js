@@ -60,7 +60,7 @@ function RepoInfo () {
     }, [])
    
     return (
-        <div>
+        <div className="container border mt-4 mb-4">
             <div className="body">
                 <h1 className="body-header">Repository Information</h1>
                 <h4 className="body-sm-header">Repository name: <span className="notbold">{params.repo}</span></h4>
