@@ -40,6 +40,7 @@ function App() {
         <div className='col-4 text-center'>
           <img src={gitHubImg} alt='github-logo'/>
           <h1>GitHub Explorer</h1>
+          <p>Search for public repositories by its owners</p>
           <form onSubmit={clickHandler}>
             <div className='form-group row g-2'>
               <div className="col-8">
